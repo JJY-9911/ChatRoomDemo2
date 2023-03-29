@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Util.UserDao">
+
+    <!--查询-->
+    <select id="getUser"
+            resultType="com.batis.User">
+        select *
+        from USER
+        where
+            USERNAME=#{userName} and PASSWORD=#{passWord} limit 1
+    </select>
+
+    <select id="checkUser"
+            resultType="boolean">
+        select count(*)
+        from USER
+        where
+            USERNAME=#{userName} limit 1
+    </select>
+
+    <!--注册插入-->
+    <insert id="addUser">
+        insert into USER (username, PASSWORD)
+        values (#{userName}, #{passWord})
+    </insert>
+
+</mapper>
